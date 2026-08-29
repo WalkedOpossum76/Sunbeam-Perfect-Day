@@ -13,3 +13,8 @@ func _on_button_button_down() -> void:
 func _on_button_button_up() -> void:
 	sprite.region_rect = Rect2(0, 0, 11, 13)
 	$Button.disabled = true
+	cameraAnimation.play("Zoom_In")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$"../Ducky".visible = false
+	$"../Dino Duck".visible = true

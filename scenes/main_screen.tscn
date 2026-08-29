@@ -1,12 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnukv3cvon7tl"]
+[gd_scene load_steps=28 format=3 uid="uid://bnukv3cvon7tl"]
 
 [ext_resource type="Texture2D" uid="uid://rwakxjl5p7n8" path="res://sprites/Backgrounds.png" id="1_8nem7"]
 [ext_resource type="PackedScene" uid="uid://c1ksig25528rt" path="res://scenes/ducky.tscn" id="1_wi0bq"]
-[ext_resource type="Script" path="res://scenes/tomagatchi_background.gd" id="2_3ckjf"]
+[ext_resource type="Script" path="res://scripts/tomagatchi_background.gd" id="2_3ckjf"]
 [ext_resource type="Texture2D" uid="uid://dkx5qvi5p6l1" path="res://sprites/Clouds.png" id="3_cq4el"]
 [ext_resource type="Texture2D" uid="uid://dc0sccj8n5wpw" path="res://sprites/Tamagotchi.png" id="3_u70lh"]
+[ext_resource type="PackedScene" uid="uid://c1drc8wdvmjy0" path="res://scenes/character_body_2d.tscn" id="4_psltp"]
 [ext_resource type="Script" path="res://scripts/button_1.gd" id="4_yuifq"]
 [ext_resource type="Texture2D" uid="uid://qa7cxjgwhhgp" path="res://sprites/Button.png" id="5_26tpd"]
+[ext_resource type="Texture2D" uid="uid://jklykxdecn1e" path="res://sprites/run tilemap.png" id="5_qwnj6"]
+[ext_resource type="Script" path="res://scenes/button_2.gd" id="10_ay450"]
 
 [sub_resource type="Gradient" id="Gradient_wrv1e"]
 offsets = PackedFloat32Array(1)
@@ -138,6 +141,15 @@ region_rect = Rect2(0, 0, 15, 6)
 
 [node name="Timer" type="Timer" parent="Tomagatchi Background"]
 
+[node name="Dino Duck" parent="." instance=ExtResource("4_psltp")]
+position = Vector2(472, 392)
+scale = Vector2(5, 5)
+
+[node name="Dino Background" type="Sprite2D" parent="."]
+position = Vector2(570, 396)
+scale = Vector2(16.75, 0.5)
+texture = ExtResource("5_qwnj6")
+
 [node name="Ducky" parent="." instance=ExtResource("1_wi0bq")]
 position = Vector2(576, 392)
 scale = Vector2(5, 5)
@@ -203,7 +215,7 @@ region_rect = Rect2(0, 0, 11, 13)
 
 [node name="Button 2" type="Node2D" parent="."]
 position = Vector2(574, 536)
-script = ExtResource("4_yuifq")
+script = ExtResource("10_ay450")
 
 [node name="Button" type="Button" parent="Button 2"]
 offset_left = -37.0
@@ -260,6 +272,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 11, 13)
 
 [connection signal="timeout" from="Tomagatchi Background/Timer" to="Tomagatchi Background" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Tomagatchi Background" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="Button 2" method="_on_animation_player_animation_finished"]
 [connection signal="button_down" from="Button 1/Button" to="Button 1" method="_on_button_button_down"]
 [connection signal="button_up" from="Button 1/Button" to="Button 1" method="_on_button_button_up"]
 [connection signal="button_down" from="Button 2/Button" to="Button 2" method="_on_button_button_down"]

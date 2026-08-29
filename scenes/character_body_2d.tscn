@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1drc8wdvmjy0"]
+
+[ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="1_35hp2"]
+[ext_resource type="Texture2D" uid="uid://dhurpiuhmp70o" path="res://sprites/ducky run duck.png" id="1_aciqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s202q"]
+atlas = ExtResource("1_aciqc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onqqf"]
+atlas = ExtResource("1_aciqc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tmak"]
+atlas = ExtResource("1_aciqc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hosx"]
+atlas = ExtResource("1_aciqc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d50y2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s202q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onqqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tmak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hosx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7d0o"]
+radius = 4.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_35hp2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_d50y2")
+autoplay = "default"
+frame = 1
+frame_progress = 0.217472
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("CircleShape2D_h7d0o")
