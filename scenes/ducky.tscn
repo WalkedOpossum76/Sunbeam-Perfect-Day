@@ -8,13 +8,13 @@ radius = 3.84437
 height = 22.1169
 
 [node name="Ducky" type="CharacterBody2D"]
-position = Vector2(238, 87)
 script = ExtResource("1_pvq7p")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_d7ru6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -15)
 scale = Vector2(2.08097, -1.28416)
 shape = SubResource("CapsuleShape2D_hc7w0")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_d7ru6")

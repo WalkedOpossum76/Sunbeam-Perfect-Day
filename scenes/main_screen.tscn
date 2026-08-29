@@ -1,9 +1,268 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnukv3cvon7tl"]
+[gd_scene load_steps=25 format=3 uid="uid://bnukv3cvon7tl"]
 
+[ext_resource type="Texture2D" uid="uid://rwakxjl5p7n8" path="res://sprites/Backgrounds.png" id="1_8nem7"]
 [ext_resource type="PackedScene" uid="uid://c1ksig25528rt" path="res://scenes/ducky.tscn" id="1_wi0bq"]
+[ext_resource type="Script" path="res://scenes/tomagatchi_background.gd" id="2_3ckjf"]
+[ext_resource type="Texture2D" uid="uid://dkx5qvi5p6l1" path="res://sprites/Clouds.png" id="3_cq4el"]
+[ext_resource type="Texture2D" uid="uid://dc0sccj8n5wpw" path="res://sprites/Tamagotchi.png" id="3_u70lh"]
+[ext_resource type="Script" path="res://scripts/button_1.gd" id="4_yuifq"]
+[ext_resource type="Texture2D" uid="uid://qa7cxjgwhhgp" path="res://sprites/Button.png" id="5_26tpd"]
+
+[sub_resource type="Gradient" id="Gradient_wrv1e"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7epps"]
+gradient = SubResource("Gradient_wrv1e")
+fill = 1
+fill_from = Vector2(0.495726, 0.525641)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eioe0"]
+size = Vector2(266, 8)
+
+[sub_resource type="Animation" id="Animation_d4g2o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 324)]
+}
+
+[sub_resource type="Animation" id="Animation_ptjg2"]
+resource_name = "Zoom_In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3.25, 3.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 324), Vector2(572, 313)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0oreq"]
+_data = {
+"RESET": SubResource("Animation_d4g2o"),
+"Zoom_In": SubResource("Animation_ptjg2")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ay80u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b74ho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1v7r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilc1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rikbn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfbxd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vurj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vwsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0v8lx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylbcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dic4"]
 
 [node name="mainScreen" type="Node2D"]
 
+[node name="Screen Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(18, 10.125)
+texture = SubResource("GradientTexture2D_7epps")
+
+[node name="Tomagatchi Background" type="Sprite2D" parent="."]
+position = Vector2(572, 313)
+scale = Vector2(6.38096, 6.51852)
+texture = ExtResource("1_8nem7")
+region_enabled = true
+region_rect = Rect2(0, 0, 42, 27)
+script = ExtResource("2_3ckjf")
+
+[node name="Cloud 1" type="Sprite2D" parent="Tomagatchi Background"]
+position = Vector2(-13.1642, -6.28977)
+texture = ExtResource("3_cq4el")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 6)
+
+[node name="Cloud 2" type="Sprite2D" parent="Tomagatchi Background"]
+position = Vector2(-13.1642, -6.28977)
+texture = ExtResource("3_cq4el")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 6)
+
+[node name="Cloud 3" type="Sprite2D" parent="Tomagatchi Background"]
+position = Vector2(-13.1642, -6.28977)
+texture = ExtResource("3_cq4el")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 6)
+
+[node name="Timer" type="Timer" parent="Tomagatchi Background"]
+
 [node name="Ducky" parent="." instance=ExtResource("1_wi0bq")]
-position = Vector2(568, 242)
+position = Vector2(576, 392)
 scale = Vector2(5, 5)
+
+[node name="Screen Background Hide Clouds 1" type="Sprite2D" parent="."]
+position = Vector2(320, 286)
+scale = Vector2(3.21875, 4.0625)
+texture = SubResource("GradientTexture2D_7epps")
+
+[node name="Screen Background Hide Clouds 2" type="Sprite2D" parent="."]
+position = Vector2(850.234, 268)
+scale = Vector2(4.18018, 3.625)
+texture = SubResource("GradientTexture2D_7epps")
+
+[node name="Tomagatchi" type="Sprite2D" parent="."]
+position = Vector2(572, 323)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("3_u70lh")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(16, -3.05176e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(555, 396)
+shape = SubResource("RectangleShape2D_eioe0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_0oreq")
+}
+
+[node name="Button 1" type="Node2D" parent="."]
+position = Vector2(440, 480)
+script = ExtResource("4_yuifq")
+
+[node name="Button" type="Button" parent="Button 1"]
+offset_left = -37.0
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = 42.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ay80u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b74ho")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v1v7r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ilc1y")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rikbn")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_hfbxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vurj0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_2vwsm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0v8lx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ylbcv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dic4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button 1"]
+position = Vector2(-1, 0)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("5_26tpd")
+region_enabled = true
+region_rect = Rect2(0, 0, 11, 13)
+
+[node name="Button 2" type="Node2D" parent="."]
+position = Vector2(574, 536)
+script = ExtResource("4_yuifq")
+
+[node name="Button" type="Button" parent="Button 2"]
+offset_left = -37.0
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = 42.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ay80u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b74ho")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v1v7r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ilc1y")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rikbn")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_hfbxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vurj0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_2vwsm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0v8lx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ylbcv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dic4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button 2"]
+position = Vector2(-1, 0)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("5_26tpd")
+region_enabled = true
+region_rect = Rect2(0, 0, 11, 13)
+
+[node name="Button 3" type="Node2D" parent="."]
+position = Vector2(704, 480)
+script = ExtResource("4_yuifq")
+
+[node name="Button" type="Button" parent="Button 3"]
+offset_left = -37.0
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = 42.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ay80u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b74ho")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_v1v7r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ilc1y")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rikbn")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_hfbxd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vurj0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_2vwsm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0v8lx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ylbcv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dic4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button 3"]
+position = Vector2(-1, 0)
+scale = Vector2(6.5, 6.5)
+texture = ExtResource("5_26tpd")
+region_enabled = true
+region_rect = Rect2(0, 0, 11, 13)
+
+[connection signal="timeout" from="Tomagatchi Background/Timer" to="Tomagatchi Background" method="_on_timer_timeout"]
+[connection signal="button_down" from="Button 1/Button" to="Button 1" method="_on_button_button_down"]
+[connection signal="button_up" from="Button 1/Button" to="Button 1" method="_on_button_button_up"]
+[connection signal="button_down" from="Button 2/Button" to="Button 2" method="_on_button_button_down"]
+[connection signal="button_up" from="Button 2/Button" to="Button 2" method="_on_button_button_up"]
+[connection signal="button_down" from="Button 3/Button" to="Button 3" method="_on_button_button_down"]
+[connection signal="button_up" from="Button 3/Button" to="Button 3" method="_on_button_button_up"]
