@@ -11,10 +11,17 @@ func _on_button_button_down() -> void:
 	sprite.region_rect = Rect2(11, 0, 11, 13)
 
 func _on_button_button_up() -> void:
+	$"../Dino Duck".animation.play("default")
 	sprite.region_rect = Rect2(0, 0, 11, 13)
 	$Button.disabled = true
 	cameraAnimation.play("Zoom_In")
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	$"../Ducky".visible = false
-	$"../Dino Duck".visible = true
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Zoom_In":
+		$"../Ducky".visible = false
+		$"../Dino Duck".visible = true
+		$"../Tomagatchi Background/Rock Timer".start()
+		$"../Tomagatchi Background/Dino Game Timer".start()
+	elif anim_name == "Zoom_Out":
+		$"../Ducky".visible = true
+		$"../Dino Duck".visible = false
