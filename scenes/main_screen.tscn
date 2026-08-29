@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/tomagatchi_background.gd" id="2_3ckjf"]
 [ext_resource type="Texture2D" uid="uid://dkx5qvi5p6l1" path="res://sprites/Clouds.png" id="3_cq4el"]
 [ext_resource type="Texture2D" uid="uid://dc0sccj8n5wpw" path="res://sprites/Tamagotchi.png" id="3_u70lh"]
-[ext_resource type="PackedScene" uid="uid://c1drc8wdvmjy0" path="res://scenes/character_body_2d.tscn" id="4_psltp"]
+[ext_resource type="PackedScene" path="res://scenes/character_body_2d.tscn" id="4_psltp"]
 [ext_resource type="Script" path="res://scripts/button_1.gd" id="4_yuifq"]
 [ext_resource type="Texture2D" uid="uid://qa7cxjgwhhgp" path="res://sprites/Button.png" id="5_26tpd"]
 [ext_resource type="Texture2D" uid="uid://jklykxdecn1e" path="res://sprites/run tilemap.png" id="5_qwnj6"]
