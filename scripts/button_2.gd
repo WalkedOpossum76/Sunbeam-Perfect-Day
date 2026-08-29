@@ -12,6 +12,11 @@ func _on_button_button_down() -> void:
 
 func _on_button_button_up() -> void:
 	$"../Dino Duck".animation.play("default")
+	if $"../Button 1".get_children().size() >= 3:
+		$"../Button 1".get_child(2).queue_free()
+	if $"../Button 3".get_children().size() >= 3:
+		$"../Button 3".get_child(2).queue_free()
+	
 	sprite.region_rect = Rect2(0, 0, 11, 13)
 	$Button.disabled = true
 	cameraAnimation.play("Zoom_In")
