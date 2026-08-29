@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnukv3cvon7tl"]
+
+[ext_resource type="PackedScene" uid="uid://c1ksig25528rt" path="res://scenes/ducky.tscn" id="1_wi0bq"]
+
+[node name="mainScreen" type="Node2D"]
+
+[node name="Ducky" parent="." instance=ExtResource("1_wi0bq")]
+position = Vector2(568, 242)
+scale = Vector2(5, 5)
