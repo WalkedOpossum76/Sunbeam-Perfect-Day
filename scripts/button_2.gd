@@ -30,3 +30,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "Zoom_Out":
 		$"../Ducky".visible = true
 		$"../Dino Duck".visible = false
+		$Button.disabled = false

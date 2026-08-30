@@ -19,7 +19,7 @@ func _on_button_button_up() -> void:
 	if heartTween.is_running():
 		heartTween.kill()
 	var heart = Sprite2D.new()
-	heart.texture = load("res://sprites/Heart.png")
+	heart.texture = load("res://sprites/Heart1.png")
 	heart.scale = Vector2(2.5, 2.5)
 	heart.z_index = -1
 	add_child(heart)
